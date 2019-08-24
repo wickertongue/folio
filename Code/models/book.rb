@@ -22,7 +22,7 @@ class Book
     RETURNING id"
     values = [@title, @publisher, @genre, @description, @cost_to_sell, @cost_to_purchase]
     book_data = SqlRunner.run(sql, values)
-    @id = results.first()['id'].to_i
+    @id = book_data.first()['id'].to_i
   end
 
 
