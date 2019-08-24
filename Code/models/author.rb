@@ -12,13 +12,18 @@ class Author
     @surname = options['surname']
   end
 
-  def save
+  def save()
     sql = "INSERT INTO authors (forename, surname)
     VALUES ($1, $2)
     RETURNING id"
     values = [@forename, @surname]
     author_data = SqlRunner.run(sql, values)
     @id = author_data.first()['id'].to_i
+  end
+
+  def self.delete_all()
+    sql = "DELETE FROM authors"
+    SqlRunner.run(sql)
   end
 
 end

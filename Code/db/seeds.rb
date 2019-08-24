@@ -3,6 +3,7 @@ require_relative("../models/author")
 require_relative("../models/inventory")
 
 Inventory.delete_all()
+Author.delete_all()
 
 
 book1 = Book.new({
