@@ -13,6 +13,8 @@ class Inventory
     @quantity = options['quantity'].to_i
   end
 
+# working methods
+
   def save()
     sql = "INSERT INTO inventory (author_id, book_id, quantity)
     VALUES ($1, $2, $3)
@@ -27,6 +29,24 @@ class Inventory
     SqlRunner.run(sql)
   end
 
+  def delete()
+    sql = "DELETE FROM inventory WHERE id = $1"
+    values = [@id]
+    SqlRunner.run(sql, values)
+  end
+
+# methods in progress:
+
+# quantity is a property of inventory, not of book. The three methods below should then be class methods (self) rather than instance methods?
+
+# potential class method
+  def self.reduce_quantity_by_one(inventory_item)
+    new = inventory_item.quantity
+    new2 = new -= 1
+    p new2
+  end
+
+# instance methods
   def current_quantity
     sql = "SELECT inventory.quantity FROM inventory
     WHERE id = $1"
@@ -47,12 +67,6 @@ class Inventory
     SET quantity = $1
     WHERE id = $2"
     values = [reduce_current_quantity_by_one, @id]
-    SqlRunner.run(sql, values)
-  end
-
-  def delete()
-    sql = "DELETE FROM inventory WHERE id = $1"
-    values = [@id]
     SqlRunner.run(sql, values)
   end
 
