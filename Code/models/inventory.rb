@@ -27,7 +27,7 @@ class Inventory
     SqlRunner.run(sql)
   end
 
-  def return_quantity
+  def current_quantity
     sql = "SELECT inventory.quantity FROM inventory
     WHERE id = $1"
     values = [@id]
@@ -35,17 +35,16 @@ class Inventory
     quantity.first()['quantity'].to_i
   end
 
-  def reduce_quantity
-    new_quantity = return_quantity
+  def reduce_current_quantity_by_one
+    new_quantity = current_quantity
     new_quantity -= 1
   end
 
-  def reduce_quantity_in_database
-    new_quantity = reduce_quantity
+  def reduce_current_quantity_in_database_by_one
     sql = "UPDATE inventory
     SET quantity = $1
     WHERE id = $2"
-    values = [new_quantity, @id]
+    values = [reduce_current_quantity_by_one, @id]
     SqlRunner.run(sql, values)
   end
 
