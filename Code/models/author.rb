@@ -32,4 +32,8 @@ class Author
     SqlRunner.run(sql, values)
   end
 
+  def full_name
+    return "#{@forename.capitalize} #{@surname.capitalize}"
+  end
+
 end

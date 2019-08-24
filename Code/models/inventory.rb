@@ -35,40 +35,30 @@ class Inventory
     SqlRunner.run(sql, values)
   end
 
-# methods in progress:
-
-# quantity is a property of inventory, not of book. The three methods below should then be class methods (self) rather than instance methods?
-
-# potential class method
-  def self.reduce_quantity_by_one(inventory_item)
-    new = inventory_item.quantity
-    new2 = new -= 1
-    p new2
+  def self.all()
+    sql = "SELECT * FROM inventory"
+    SqlRunner.run(sql)
+    inventory_data = SqlRunner.run(sql)
+    return inventory_data.map { |item| Inventory.new(item) }
   end
 
-# instance methods
-  def current_quantity
-    sql = "SELECT inventory.quantity FROM inventory
-    WHERE id = $1"
-    values = [@id]
-    quantity = SqlRunner.run(sql, values)
-    quantity.first()['quantity'].to_i
+  def current_quantity()
+    return @quantity
   end
 
-  def reduce_current_quantity_by_one
-    new_quantity = current_quantity
-    if new_quantity > 0
-      new_quantity -= 1
+  def reduce_current_quantity_by_one()
+    unless @quantity < 1
+      @quantity -= 1
+      update()
     end
   end
 
-  def reduce_current_quantity_in_database_by_one
+  def update()
     sql = "UPDATE inventory
-    SET quantity = $1
-    WHERE id = $2"
-    values = [reduce_current_quantity_by_one, @id]
+    SET (author_id, book_id, quantity) = ($1, $2, $3)
+    WHERE id = $4"
+    values = [@author_id, @book_id, @quantity, @id]
     SqlRunner.run(sql, values)
   end
-
 
 end
