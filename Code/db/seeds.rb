@@ -1,10 +1,12 @@
+require('pry')
+
 require_relative("../models/book")
 require_relative("../models/author")
 require_relative("../models/inventory")
 
 Inventory.delete_all()
 Author.delete_all()
-
+Book.delete_all()
 
 book1 = Book.new({
   "title" => "PopCo",
@@ -31,3 +33,6 @@ inventory1 = Inventory.new({
   })
 
 inventory1.save()
+
+binding.pry
+nil
