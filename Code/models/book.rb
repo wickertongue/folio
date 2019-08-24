@@ -16,7 +16,7 @@ class Book
     @cost_to_purchase = options['cost_to_purchase'].to_i
   end
 
-  def save
+  def save()
     sql = "INSERT INTO books (title, publisher, genre, description, cost_to_sell, cost_to_purchase)
     VALUES ($1, $2, $3, $4, $5, $6)
     RETURNING id"
@@ -25,6 +25,9 @@ class Book
     @id = book_data.first()['id'].to_i
   end
 
-
+  def self.delete_all()
+    sql = "DELETE FROM books"
+    SqlRunner.run(sql)
+  end
 
 end
