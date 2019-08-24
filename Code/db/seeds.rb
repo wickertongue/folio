@@ -11,4 +11,11 @@ book1 = Book.new({
   "cost_to_purchase" => "7.00"
   })
 
-  book1.save()
+book1.save()
+
+author1 = Author.new({
+  "forename" => "Scarlett",
+  "surname" => "Thomas"
+  })
+
+author1.save
