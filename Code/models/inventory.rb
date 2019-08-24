@@ -33,4 +33,5 @@ class Inventory
     SqlRunner.run(sql, values)
   end
 
+
 end
