@@ -27,6 +27,15 @@ class Inventory
     SqlRunner.run(sql)
   end
 
+  def reduce_quantity_by_one()
+    quantity =- 1
+    sql = "UPDATE inventory
+    SET quantity = $1
+    WHERE id = $2"
+    values = [quantity, @id]
+    SqlRunner.run(sql, values)
+  end
+
   def delete()
     sql = "DELETE FROM inventory WHERE id = $1"
     values = [@id]

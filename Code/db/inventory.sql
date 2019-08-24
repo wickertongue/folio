@@ -1,6 +1,6 @@
+DROP TABLE inventory;
 DROP TABLE authors;
 DROP TABLE books;
-DROP TABLE inventory;
 
 CREATE TABLE authors (
   id SERIAL8 primary key,
