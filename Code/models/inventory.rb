@@ -13,13 +13,18 @@ class Inventory
     @quantity = options['quantity'].to_i
   end
 
-  def save
+  def save()
     sql = "INSERT INTO inventory (author_id, book_id, quantity)
     VALUES ($1, $2, $3)
     RETURNING id"
     values = [@author_id, @book_id, @quantity]
     inventory_data = SqlRunner.run(sql, values)
     @id = inventory_data.first()['id'].to_i
+  end
+
+  def self.delete_all()
+    sql = "DELETE FROM inventory"
+    SqlRunner.run(sql)
   end
 
 end

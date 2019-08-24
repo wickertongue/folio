@@ -2,6 +2,9 @@ require_relative("../models/book")
 require_relative("../models/author")
 require_relative("../models/inventory")
 
+Inventory.delete_all()
+
+
 book1 = Book.new({
   "title" => "PopCo",
   "publisher" => "Canon Gate",
