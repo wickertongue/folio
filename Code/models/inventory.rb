@@ -37,7 +37,9 @@ class Inventory
 
   def reduce_current_quantity_by_one
     new_quantity = current_quantity
-    new_quantity -= 1
+    if new_quantity > 0
+      new_quantity -= 1
+    end
   end
 
   def reduce_current_quantity_in_database_by_one
@@ -45,15 +47,6 @@ class Inventory
     SET quantity = $1
     WHERE id = $2"
     values = [reduce_current_quantity_by_one, @id]
-    SqlRunner.run(sql, values)
-  end
-
-  def reduce_quantity_by_one()
-    quantity = 1
-    sql = "UPDATE inventory
-    SET quantity = $1
-    WHERE id = $2"
-    values = [quantity, @id]
     SqlRunner.run(sql, values)
   end
 
