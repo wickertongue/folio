@@ -18,4 +18,12 @@ author1 = Author.new({
   "surname" => "Thomas"
   })
 
-author1.save
+author1.save()
+
+inventory1 = Inventory.new({
+  "author_id" => author1.id,
+  "book_id" => book1.id,
+  "quantity" => "3"
+  })
+
+inventory1.save()
