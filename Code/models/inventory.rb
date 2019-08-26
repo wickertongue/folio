@@ -41,6 +41,20 @@ class Inventory
     return Author.new (author_data.first())
   end
 
+  def author_plus()
+    sql = "SELECT * FROM inventory
+    INNER JOIN authors
+    ON authors.id = inventory.author_id
+    WHERE book_id = $1"
+    values = [@book_id]
+    authors_data = SqlRunner.run(sql, values)
+    return authors_data.map { |author| Author.new(author) }
+  end
+
+  def author_count()
+      return author_plus.count
+  end
+
   def book()
     sql = "SELECT * from books
     WHERE id = $1"
