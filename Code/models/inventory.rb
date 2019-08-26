@@ -4,22 +4,24 @@ require_relative("../db/sqlrunner")
 
 class Inventory
 
-  attr_reader :author_id, :book_id, :quantity, :id
+  attr_reader :book_id, :id
+  attr_accessor :quantity, :cost_to_sell, :cost_to_purchase
 
   def initialize(options)
     @id = options['id'].to_i if options['id']
-    @author_id = options['author_id'].to_i
     @book_id = options['book_id'].to_i
     @quantity = options['quantity'].to_i
+    @cost_to_sell = options['cost_to_sell'].to_i
+    @cost_to_purchase = options['cost_to_purchase'].to_i
   end
 
 # Create
 
   def save()
-    sql = "INSERT INTO inventory (author_id, book_id, quantity)
-    VALUES ($1, $2, $3)
+    sql = "INSERT INTO inventory (book_id, quantity, cost_to_sell, cost_to_purchase)
+    VALUES ($1, $2, $3, $4)
     RETURNING id"
-    values = [@author_id, @book_id, @quantity]
+    values = [@book_id, @quantity, @cost_to_sell, @cost_to_purchase]
     inventory_data = SqlRunner.run(sql, values)
     @id = inventory_data.first()['id'].to_i
   end
@@ -33,15 +35,15 @@ class Inventory
     return inventory_data.map { |item| Inventory.new(item) }
   end
 
-  def author_or_authors()
-    sql = "SELECT * FROM inventory
-    INNER JOIN authors
-    ON authors.id = inventory.author_id
-    WHERE book_id = $1"
-    values = [@book_id]
-    authors_data = SqlRunner.run(sql, values)
-    return authors_data.map { |author| Author.new(author) }
-  end
+  # def author_or_authors()
+  #   sql = "SELECT * FROM inventory
+  #   INNER JOIN authors
+  #   ON authors.id = inventory.author_id
+  #   WHERE book_id = $1"
+  #   values = [@book_id]
+  #   authors_data = SqlRunner.run(sql, values)
+  #   return authors_data.map { |author| Author.new(author) }
+  # end
 
   def book()
     sql = "SELECT * from books
@@ -55,9 +57,9 @@ class Inventory
 
   def update()
     sql = "UPDATE inventory
-    SET (author_id, book_id, quantity) = ($1, $2, $3)
-    WHERE id = $4"
-    values = [@author_id, @book_id, @quantity, @id]
+    SET (book_id, quantity, cost_to_sell, cost_to_purchase) = ($1, $2, $3, $4)
+    WHERE id = $5"
+    values = [@book_id, @quantity, @cost_to_sell, @cost_to_purchase, @id]
     SqlRunner.run(sql, values)
   end
 
@@ -83,23 +85,22 @@ class Inventory
     end
   end
 
-
-  def more_than_one_author_for_a_single_book?()
-    if author_or_authors.count > 1
-      true
-    else
-      false
-    end
-  end
-
-  def merge_authors_if_necessary()
-    author_or_authors
-    if more_than_one_author_for_a_single_book? == true
-      authors = author_or_authors.map { |author| author.full_name }
-      return authors
-    else
-      return_author_or_authors
-    end
-  end
+  # def more_than_one_author_for_a_single_book?()
+  #   if author_or_authors.count > 1
+  #     true
+  #   else
+  #     false
+  #   end
+  # end
+  #
+  # def merge_authors_if_necessary()
+  #   author_or_authors
+  #   if more_than_one_author_for_a_single_book? == true
+  #     authors = author_or_authors.map { |author| author.full_name }
+  #     return authors
+  #   else
+  #     return_author_or_authors
+  #   end
+  # end
 
 end

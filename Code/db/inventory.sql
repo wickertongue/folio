@@ -1,3 +1,4 @@
+DROP TABLE books_authors_relationship;
 DROP TABLE inventory;
 DROP TABLE authors;
 DROP TABLE books;
@@ -13,14 +14,18 @@ CREATE TABLE books (
   title VARCHAR(255) NOT NULL,
   publisher VARCHAR(255) NOT NULL,
   genre VARCHAR(255),
-  description VARCHAR(500) NOT NULL,
-  cost_to_sell NUMERIC NOT NULL,
-  cost_to_purchase NUMERIC NOT NULL
+  description VARCHAR(500) NOT NULL
 );
 
 CREATE TABLE inventory (
   id SERIAL8 primary key,
-  author_id INT8 references authors(id),
   book_id INT8 references books(id),
-  quantity INT8 NOT NULL
+  quantity INT8 NOT NULL,
+  cost_to_sell NUMERIC NOT NULL,
+  cost_to_purchase NUMERIC NOT NULL
+);
+
+CREATE TABLE books_authors_junction (
+  author_id INT8 references authors(id),
+  book_id INT8 references books(id)
 );
