@@ -33,10 +33,8 @@ class Author
     return author_data.map { |author| Author.new(author) }
   end
 
-# to get to books from author have to go through inventory, books - inventory connected by book_id, inventory to au
-
   def books()
-    sql = "SELECT * FROM books
+    sql = "SELECT books.* FROM books
     INNER JOIN inventory
     ON inventory.book_id = books.id
     WHERE inventory.author_id = $1"

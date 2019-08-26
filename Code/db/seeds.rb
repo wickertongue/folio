@@ -52,6 +52,17 @@ book3 = Book.new({
 
 book3.save()
 
+book4 = Book.new({
+  "title" => "Black House",
+  "publisher" => "Random House",
+  "genre" => "Horror",
+  "description" => "As a child, Jack visited the Territories, a menacing place of violence and madness, to save his dying mother. Now, if the latest child victim is to be saved, Jack must retrieve his lost childhood memories, and revisit the one place he hoped never to see again.",
+  "cost_to_sell" => "13.00",
+  "cost_to_purchase" => "9.00"
+  })
+
+book4.save()
+
 author1 = Author.new({
   "forename" => "Scarlett",
   "surname" => "Thomas"
@@ -72,6 +83,20 @@ author3 = Author.new({
   })
 
 author3.save()
+
+author4 = Author.new({
+  "forename" => "Stephen",
+  "surname" => "King"
+  })
+
+author4.save()
+
+author5 = Author.new({
+  "forename" => "Peter",
+  "surname" => "Straub"
+  })
+
+author5.save()
 
 inventory1 = Inventory.new({
   "author_id" => author1.id,
@@ -104,6 +129,22 @@ inventory4 = Inventory.new({
   })
 
 inventory4.save()
+
+inventory5 = Inventory.new({
+  "author_id" => author4.id,
+  "book_id" => book4.id,
+  "quantity" => "2"
+  })
+
+inventory5.save()
+
+inventory6 = Inventory.new({
+  "author_id" => author5.id,
+  "book_id" => book4.id,
+  "quantity" => "3"
+  })
+
+inventory6.save()
 
 binding.pry
 nil
