@@ -4,14 +4,14 @@
 
 <table style="width 100%">
   <tr>
-    <th>Book Title</th>
     <th>Author</th>
+    <th>Book Title</th>
     <th>Number in Stock</th>
   </tr>
     <% for each_item in @inventory %>
   <tr>
-    <td><%= each_item.book.title %></td>
     <td><%= each_item.author.full_name %></td>
+    <td><%= each_item.book.title %></td>
     <td><%= each_item.quantity %></td>
   </tr>
     <% end %>

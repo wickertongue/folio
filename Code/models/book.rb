@@ -70,4 +70,14 @@ class Book
     SqlRunner.run(sql, values)
   end
 
+  # Other
+
+  def more_than_one_author_for_book?
+    if authors.count > 1
+      true
+    else
+      false
+    end
+  end 
+
 end

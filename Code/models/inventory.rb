@@ -33,15 +33,7 @@ class Inventory
     return inventory_data.map { |item| Inventory.new(item) }
   end
 
-  def author()
-    sql = "SELECT * FROM authors
-    WHERE id = $1"
-    values = [@author_id]
-    author_data = SqlRunner.run(sql, values)
-    return Author.new (author_data.first())
-  end
-
-  def author_plus()
+  def author_or_authors()
     sql = "SELECT * FROM inventory
     INNER JOIN authors
     ON authors.id = inventory.author_id
@@ -51,10 +43,6 @@ class Inventory
     return authors_data.map { |author| Author.new(author) }
   end
 
-  def author_count()
-      return author_plus.count
-  end
-
   def book()
     sql = "SELECT * from books
     WHERE id = $1"
@@ -62,13 +50,6 @@ class Inventory
     book_data = SqlRunner.run(sql, values)
     return Book.new (book_data.first())
   end
-
-
-  # sql = "SELECT * FROM zombies
-  # WHERE id = $1"
-  # values = [@zombie_id]
-  # results = SqlRunner.run( sql, values )
-  # return Zombie.new( results.first )
 
 # Update
 
@@ -99,6 +80,25 @@ class Inventory
     unless @quantity < 1
       @quantity -= 1
       update()
+    end
+  end
+
+
+  def more_than_one_author_for_a_single_book?()
+    if author_or_authors.count > 1
+      true
+    else
+      false
+    end
+  end
+
+  def merge_authors_if_necessary()
+    author_or_authors
+    if more_than_one_author_for_a_single_book? == true
+      authors = author_or_authors.map { |author| author.full_name }
+      return authors
+    else
+      return_author_or_authors
     end
   end
 
