@@ -43,7 +43,7 @@ class Inventory
     return Book.new (book_data.first())
   end
 
-  def authors()
+  def author_or_authors()
     sql = "SELECT * FROM authors
     INNER JOIN books_authors_junction
     ON authors.id = books_authors_junction.author_id
@@ -78,21 +78,14 @@ class Inventory
 
 # Other
 
-  def return_author_count()
-    sql = "SELECT COUNT(authors)
-    FROM authors
-    INNER JOIN books_authors_junction
-    ON authors.id = books_authors_junction.author_id
-    WHERE book_id = $1"
-    values = [@book_id]
-    author_count = SqlRunner.run(sql, values)
-    return author_count.first()['count']
+  def merge_authors_if_necessary
+    if (author_or_authors.count) > 1
+      all_authors = author_or_authors.map { |author| author.full_name }
+      return all_authors
+    else
+      return author_or_authors
+    end
   end
-
-  # def merge_authors_if_necessary
-  #   if return_author_count > 1
-  #
-  # end
 
   def reduce_current_quantity_by_one()
     unless @quantity < 1
