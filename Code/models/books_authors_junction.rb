@@ -55,4 +55,24 @@ class BookAuthorJunction
     SqlRunner.run(sql, values)
   end
 
+  # Other
+
+  def more_than_one_author_for_book?
+    if authors.count > 1
+      true
+    else
+      false
+    end
+  end
+
+  def merge_authors_if_necessary()
+    author_or_authors
+    if more_than_one_author_for_a_single_book? == true
+      authors = author_or_authors.map { |author| author.full_name }
+      return authors
+    else
+      return_author_or_authors
+    end
+  end
+
 end
