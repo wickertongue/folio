@@ -13,7 +13,7 @@ CREATE TABLE books (
   title VARCHAR(255) NOT NULL,
   publisher VARCHAR(255) NOT NULL,
   genre VARCHAR(255),
-  description VARCHAR(255) NOT NULL,
+  description VARCHAR(500) NOT NULL,
   cost_to_sell NUMERIC NOT NULL,
   cost_to_purchase NUMERIC NOT NULL
 );

@@ -10,7 +10,7 @@ Book.delete_all()
 
 book1 = Book.new({
   "title" => "PopCo",
-  "publisher" => "Canon Gate",
+  "publisher" => "Canongate Books",
   "genre" => "Science Fiction",
   "description" => "PopCo is a grown-up adventure of family secrets, puzzles and the power of numbers.",
   "cost_to_sell" => "9.99",
@@ -39,7 +39,18 @@ book3 = Book.new({
   "cost_to_purchase" => "7.00"
   })
 
-book3.save() 
+book3.save()
+
+book3 = Book.new({
+  "title" => "The End of Mr. Y",
+  "publisher" => "Canongate Books",
+  "genre" => "Science Fiction",
+  "description" => "When Ariel Manto uncovers a copy of The End of Mr. Y in a second-hand bookshop, she can't believe her eyes. She knows enough about its author, the outlandish Victorian scientist Thomas Lumas, to know that copies are exceedingly rare. And, some say, cursed.",
+  "cost_to_sell" => "9.99",
+  "cost_to_purchase" => "7.00"
+  })
+
+book3.save()
 
 author1 = Author.new({
   "forename" => "Scarlett",
@@ -85,6 +96,14 @@ inventory3 = Inventory.new({
   })
 
 inventory3.save()
+
+inventory4 = Inventory.new({
+  "author_id" => author1.id,
+  "book_id" => book3.id,
+  "quantity" => "7"
+  })
+
+inventory4.save()
 
 binding.pry
 nil

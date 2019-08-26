@@ -58,11 +58,11 @@ class Inventory
 
 # Other
 
-def reduce_current_quantity_by_one()
-  unless @quantity < 1
-    @quantity -= 1
-    update()
+  def reduce_current_quantity_by_one()
+    unless @quantity < 1
+      @quantity -= 1
+      update()
+    end
   end
-end
 
 end
