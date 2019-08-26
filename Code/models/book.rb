@@ -16,6 +16,8 @@ class Book
     @cost_to_purchase = options['cost_to_purchase'].to_i
   end
 
+# Create
+
   def save()
     sql = "INSERT INTO books (title, publisher, genre, description, cost_to_sell, cost_to_purchase)
     VALUES ($1, $2, $3, $4, $5, $6)
@@ -24,6 +26,19 @@ class Book
     book_data = SqlRunner.run(sql, values)
     @id = book_data.first()['id'].to_i
   end
+
+# Read
+
+  def self.all()
+    sql = "SELECT * FROM books"
+    SqlRunner.run(sql)
+    book_data = SqlRunner.run(sql)
+    return book_data.map { |book| Book.new(book) }
+  end
+
+# Update
+
+# Delete
 
   def self.delete_all()
     sql = "DELETE FROM books"
@@ -35,5 +50,7 @@ class Book
     values = [@id]
     SqlRunner.run(sql, values)
   end
+
+
 
 end
