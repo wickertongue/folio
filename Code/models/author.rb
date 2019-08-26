@@ -26,6 +26,13 @@ class Author
 
 # Read
 
+  def self.all()
+    sql = "SELECT * FROM authors"
+    SqlRunner.run(sql)
+    author_data = SqlRunner.run(sql)
+    return author_data.map { |author| Author.new(author) }
+  end
+
 # Update
 
 def update()
