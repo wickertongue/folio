@@ -1,12 +1,16 @@
-require('sinatra')
-require('sinatra/contrib/all')
 require('pry')
 
+require_relative('../main.rb')
 require_relative('../models/book.rb')
+require_relative('../models/author.rb')
 also_reload('../models/*')
 
-get '/index' do
+get '/inventory/?' do
   @books = Book.all()
   @authors = Author.all()
-  erb ( :index )
+  erb(:index)
+end
+
+get '/inventory/new' do
+  erb(:new)
 end
