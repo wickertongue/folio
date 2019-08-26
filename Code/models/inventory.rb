@@ -13,7 +13,7 @@ class Inventory
     @quantity = options['quantity'].to_i
   end
 
-# working methods
+# Create
 
   def save()
     sql = "INSERT INTO inventory (author_id, book_id, quantity)
@@ -23,6 +23,27 @@ class Inventory
     inventory_data = SqlRunner.run(sql, values)
     @id = inventory_data.first()['id'].to_i
   end
+
+# Read
+
+  def self.all()
+    sql = "SELECT * FROM inventory"
+    SqlRunner.run(sql)
+    inventory_data = SqlRunner.run(sql)
+    return inventory_data.map { |item| Inventory.new(item) }
+  end
+
+# Update
+
+  def update()
+    sql = "UPDATE inventory
+    SET (author_id, book_id, quantity) = ($1, $2, $3)
+    WHERE id = $4"
+    values = [@author_id, @book_id, @quantity, @id]
+    SqlRunner.run(sql, values)
+  end
+
+# Delete
 
   def self.delete_all()
     sql = "DELETE FROM inventory"
@@ -35,30 +56,13 @@ class Inventory
     SqlRunner.run(sql, values)
   end
 
-  def self.all()
-    sql = "SELECT * FROM inventory"
-    SqlRunner.run(sql)
-    inventory_data = SqlRunner.run(sql)
-    return inventory_data.map { |item| Inventory.new(item) }
-  end
+# Other
 
-  def current_quantity()
-    return @quantity
+def reduce_current_quantity_by_one()
+  unless @quantity < 1
+    @quantity -= 1
+    update()
   end
-
-  def reduce_current_quantity_by_one()
-    unless @quantity < 1
-      @quantity -= 1
-      update()
-    end
-  end
-
-  def update()
-    sql = "UPDATE inventory
-    SET (author_id, book_id, quantity) = ($1, $2, $3)
-    WHERE id = $4"
-    values = [@author_id, @book_id, @quantity, @id]
-    SqlRunner.run(sql, values)
-  end
+end
 
 end

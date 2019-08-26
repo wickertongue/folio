@@ -4,13 +4,16 @@ require_relative("../db/sqlrunner")
 
 class Author
 
-  attr_reader :forename, :surname, :id
+  attr_reader :id
+  attr_accessor :forename, :surname
 
   def initialize(options)
     @id = options['id'].to_i if options['id']
     @forename = options['forename']
     @surname = options['surname']
   end
+
+# Create
 
   def save()
     sql = "INSERT INTO authors (forename, surname)
@@ -20,6 +23,20 @@ class Author
     author_data = SqlRunner.run(sql, values)
     @id = author_data.first()['id'].to_i
   end
+
+# Read
+
+# Update
+
+def update()
+  sql = "UPDATE authors
+  SET (forename, surname) = ($1, $2)
+  WHERE id = $3"
+  values = [@forename, @surname, @id]
+  SqlRunner.run(sql, values)
+end
+
+# Delete
 
   def self.delete_all()
     sql = "DELETE FROM authors"
@@ -31,6 +48,8 @@ class Author
     values = [@id]
     SqlRunner.run(sql, values)
   end
+
+# Other
 
   def full_name
     return "#{@forename.capitalize} #{@surname.capitalize}"
