@@ -41,6 +41,14 @@ class Inventory
     return Author.new (author_data.first())
   end
 
+  def book()
+    sql = "SELECT * from books
+    WHERE id = $1"
+    values = [@book_id]
+    book_data = SqlRunner.run(sql, values)
+    return Book.new (book_data.first())
+  end
+
 
   # sql = "SELECT * FROM zombies
   # WHERE id = $1"

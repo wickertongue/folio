@@ -8,12 +8,12 @@
     <th>Author</th>
     <th>Number in Stock</th>
   </tr>
-
-
-  <ul>
-    <p><%= @authors %></p>
-    <p><%= @books %></p>
-    <p><%= @inventory %></p>
-  </ul>
+    <% for each_item in @inventory %>
+  <tr>
+    <td><%= each_item.book.title %></td>
+    <td><%= each_item.author.full_name %></td>
+    <td><%= each_item.quantity %></td>
+  </tr>
+    <% end %>
 
 </table>

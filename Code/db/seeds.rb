@@ -41,7 +41,7 @@ book3 = Book.new({
 
 book3.save()
 
-book3 = Book.new({
+book4 = Book.new({
   "title" => "The End of Mr. Y",
   "publisher" => "Canongate Books",
   "genre" => "Science Fiction",
@@ -50,9 +50,9 @@ book3 = Book.new({
   "cost_to_purchase" => "7.00"
   })
 
-book3.save()
+book4.save()
 
-book4 = Book.new({
+book5 = Book.new({
   "title" => "Black House",
   "publisher" => "Random House",
   "genre" => "Horror",
@@ -61,7 +61,7 @@ book4 = Book.new({
   "cost_to_purchase" => "9.00"
   })
 
-book4.save()
+book5.save()
 
 author1 = Author.new({
   "forename" => "Scarlett",
@@ -124,7 +124,7 @@ inventory3.save()
 
 inventory4 = Inventory.new({
   "author_id" => author1.id,
-  "book_id" => book3.id,
+  "book_id" => book4.id,
   "quantity" => "7"
   })
 
@@ -132,7 +132,7 @@ inventory4.save()
 
 inventory5 = Inventory.new({
   "author_id" => author4.id,
-  "book_id" => book4.id,
+  "book_id" => book5.id,
   "quantity" => "2"
   })
 
@@ -140,7 +140,7 @@ inventory5.save()
 
 inventory6 = Inventory.new({
   "author_id" => author5.id,
-  "book_id" => book4.id,
+  "book_id" => book5.id,
   "quantity" => "3"
   })
 
