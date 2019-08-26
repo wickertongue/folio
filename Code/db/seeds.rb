@@ -3,7 +3,9 @@ require('pry')
 require_relative("../models/book")
 require_relative("../models/author")
 require_relative("../models/inventory")
+require_relative("../models/books_authors_junction")
 
+BookAuthorJunction.delete_all()
 Inventory.delete_all()
 Author.delete_all()
 Book.delete_all()
@@ -132,6 +134,49 @@ inventory5 = Inventory.new({
   })
 
 inventory5.save()
+
+book_author_junction1 = BookAuthorJunction.new({
+  "author_id" => author1.id,
+  "book_id" => book1.id
+  })
+
+book_author_junction1.save()
+
+book_author_junction2 = BookAuthorJunction.new({
+  "author_id" => author2.id,
+  "book_id" => book2.id,
+  })
+
+book_author_junction2.save()
+
+book_author_junction3 = BookAuthorJunction.new({
+  "author_id" => author3.id,
+  "book_id" => book3.id,
+  })
+
+book_author_junction3.save()
+
+book_author_junction4 = BookAuthorJunction.new({
+  "author_id" => author1.id,
+  "book_id" => book4.id,
+  })
+
+book_author_junction4.save()
+
+book_author_junction5 = BookAuthorJunction.new({
+  "author_id" => author4.id,
+  "book_id" => book5.id,
+  })
+
+book_author_junction5.save()
+
+book_author_junction6 = BookAuthorJunction.new({
+  "author_id" => author5.id,
+  "book_id" => book5.id,
+  })
+
+book_author_junction6.save()
+
 
 binding.pry
 nil

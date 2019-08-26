@@ -1,4 +1,4 @@
-DROP TABLE books_authors_relationship;
+DROP TABLE books_authors_junction;
 DROP TABLE inventory;
 DROP TABLE authors;
 DROP TABLE books;
@@ -26,6 +26,7 @@ CREATE TABLE inventory (
 );
 
 CREATE TABLE books_authors_junction (
+  id SERIAL8 primary key,
   author_id INT8 references authors(id),
   book_id INT8 references books(id)
 );
