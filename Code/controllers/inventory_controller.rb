@@ -6,8 +6,9 @@ require_relative('../models/author.rb')
 also_reload('../models/*')
 
 get '/inventory/?' do
-  @books = Book.all()
+  @inventory = Inventory.all()
   @authors = Author.all()
+  @books = Book.all()
   erb(:index)
 end
 
