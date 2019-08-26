@@ -4,7 +4,8 @@ require_relative("../db/sqlrunner")
 
 class Book
 
-  attr_reader :title, :publisher, :genre, :description, :cost_to_sell, :cost_to_purchase, :id
+  attr_reader :id
+  attr_accessor :title, :publisher, :genre, :description, :cost_to_sell, :cost_to_purchase
 
   def initialize(options)
     @id = options['id'].to_i if options['id']
@@ -37,6 +38,14 @@ class Book
   end
 
 # Update
+
+  def update()
+    sql = "UPDATE books
+    SET (title, publisher, genre, description, cost_to_sell, cost_to_purchase) = ($1, $2, $3, $4, $5, $6)
+    WHERE id = $7"
+    values = [@title, @publisher, @genre, @description, @cost_to_sell, @cost_to_purchase, @id]
+    SqlRunner.run(sql, values)
+  end
 
 # Delete
 

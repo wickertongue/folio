@@ -35,13 +35,13 @@ class Author
 
 # Update
 
-def update()
-  sql = "UPDATE authors
-  SET (forename, surname) = ($1, $2)
-  WHERE id = $3"
-  values = [@forename, @surname, @id]
-  SqlRunner.run(sql, values)
-end
+  def update()
+    sql = "UPDATE authors
+    SET (forename, surname) = ($1, $2)
+    WHERE id = $3"
+    values = [@forename, @surname, @id]
+    SqlRunner.run(sql, values)
+  end
 
 # Delete
 
