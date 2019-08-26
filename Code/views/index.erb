@@ -8,12 +8,12 @@
     <th>Book Title</th>
     <th>Number in Stock</th>
   </tr>
-    <% for each_item in @inventory %>
-  <tr>
-    <td><%= each_item.author.full_name %></td>
-    <td><%= each_item.book.title %></td>
-    <td><%= each_item.quantity %></td>
-  </tr>
+    <% for each_item in @books_authors_junction %>
+    <tr>
+      <td><%= each_item.author.full_name %></td>
+      <td><%= each_item.book.title %></td>
+      <td><%= each_item.quantity %></td>
+    </tr>
     <% end %>
 
 </table>
