@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Folio</title>
-</head>
-<body>
-<main>
-  <nav>
-    <ul class="flex">
-      <li>
-        <a href="/inventory">Home</a>
-      </li>
-    </ul>
-  </nav>
-  <section id="content">
-  <%= yield %>
-  </section>
-  </main>
-</body>
+  <head>
+    <title>Folio</title>
+  </head>
+    <body>
+    <main>
+      <nav>
+        <ul class="flex">
+          <li>
+            <a href="/inventory">Home</a>
+          </li>
+          <li>
+          <a href="/inventory/new">Create New</a></li>
+        </ul>
+      </nav>
+      <section id="content">
+      <%= yield %>
+      </section>
+      </main>
+    </body>
 </html>

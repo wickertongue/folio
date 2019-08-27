@@ -18,6 +18,9 @@ get '/inventory/?' do
 end
 
 get '/inventory/new' do
+  @inventory
+  @authors
+  @books
   erb(:new)
 end
 
