@@ -53,6 +53,7 @@ class Inventory
     return authors.map { |author| Author.new(author) }
   end
 
+
 # Update
 
   def update()

@@ -20,3 +20,8 @@ end
 get '/inventory/new' do
   erb(:new)
 end
+
+get '/inventory/more_info/:id' do
+  @inventory = Inventory.find(params['id'].to_i)
+  erb(:"inventory/show")
+end
