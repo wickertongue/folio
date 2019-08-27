@@ -1,0 +1,44 @@
+<h2>New Inventory Item</h2>
+
+<form method="POST" action="/inventory/submitted_item">
+  <div class="form-wrapper">
+
+    <div class="form-el">
+      <label for="inventory-select-author">Select Author:</label>
+      <select name="author_id" id="inventory-select-author">
+        <% @authors.each do |author| %>
+            <option value=<%= author.id %>><%= author.full_name %></option>
+        <% end %>
+      </select>
+    </div>
+
+    <div class="form-el">
+      <label for="inventory-select-book">Select Book:</label>
+      <select name="book_id" id="inventory-select-book">
+        <% @books.each do |book| %>
+            <option value=<%= book.id %>><%= book.title %></option>
+        <% end %>
+      </select>
+    </div>
+
+    <div class="form-el">
+      <label for="quantity">Quantity:</label>
+      <input type="number" name="quantity" id="quantity"/>
+    </div>
+
+    <div class="form-el">
+      <label for="cost-to-sell">Selling Value:</label>
+      <input type="number" name="cost_to_sell" id="cost-to-sell"/>
+    </div>
+
+    <div class="form-el">
+      <label for="cost-to-purchase">Purchase Cost:</label>
+      <input type="number" name="cost_to_purchase" id="cost-to-purchase"/>
+    </div>
+
+    <div class="form-el">
+      <input type="submit" value="Submit Inventory Item"/>
+    </div>
+
+  </div>
+</form>
