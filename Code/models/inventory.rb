@@ -93,10 +93,6 @@ class Inventory
     return author.full_name }
   end
 
-  # def present_author_or_authors_string
-  #   present_author_or_authors.to_s
-  # end
-
   def reduce_current_quantity_by_one()
     unless @quantity < 1
       @quantity -= 1
