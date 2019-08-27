@@ -14,7 +14,7 @@
       <td><%= each_item.present_author_or_authors %></td>
       <td><%= each_item.book_id %></td>
       <td><%= each_item.quantity %></td>
-      <td class="btn-wrapper"><a class="btn btn-action" href="/inventory/more-info/:id">More Info</a></td>
+      <td class="btn-wrapper"><a href="/inventory/<%= each_item.id.to_i %>">More Info</a></td>
     </tr>
     <% end %>
 </table>

@@ -45,6 +45,14 @@ class Book
     return author_data.map { |author| Author.new(author) }
   end
 
+  def self.find(id)
+    sql = "SELECT * FROM books
+    WHERE id = $1"
+    values = [id]
+    book_data = SqlRunner.run(sql, values)
+    return Book.new(book_data.first)
+  end
+
 # Update
 
   def update()

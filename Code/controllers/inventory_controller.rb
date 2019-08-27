@@ -21,7 +21,8 @@ get '/inventory/new' do
   erb(:new)
 end
 
-get '/inventory/more_info/:id' do
+get '/inventory/:id' do
   @inventory = Inventory.find(params['id'].to_i)
+  @book = Book.find(@inventory.book_id)
   erb(:show)
 end

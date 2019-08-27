@@ -1,1 +1,11 @@
-<h1>I am a page!</h1>
+<h1>Details page for inventory ID: <%= @inventory.id %></h1>
+
+<ul>
+  <li>Inventory ID: <%= @inventory.id %></li>
+  <li>Book ID: <%= @inventory.book_id %></li>
+  <li>Book Title: <%= @book.title %></li>
+  <li>Authors: <%= @inventory.present_author_or_authors %></li>
+  <li>Quantity: <%= @inventory.quantity %></li>
+  <li>Cost to Sell: <%= @inventory.cost_to_sell %></li>
+  <li>Cost to Purchase: <%= @inventory.cost_to_purchase %></li>
+</ul>
