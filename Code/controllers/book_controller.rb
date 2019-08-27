@@ -1,0 +1,22 @@
+require('pry')
+require('sinatra')
+require('sinatra/contrib/all')
+also_reload('../models/*')
+
+require_relative('../models/book.rb')
+require_relative('../models/author.rb')
+require_relative('../models/inventory.rb')
+require_relative('../models/books_authors_junction.rb')
+
+post '/book/submitted_book' do
+  new_book = Book.new(params)
+  new_book.save
+  junction_hash = {"author_id" => params["author_join"], "book_id" => new_book.id}
+  BookAuthorJunction.new(junction_hash).save
+  redirect to '/inventory'
+end
+
+get '/book/new_book' do
+  @authors = Author.all()
+  erb(:"book/new")
+end

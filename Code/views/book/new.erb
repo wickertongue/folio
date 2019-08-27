@@ -1,0 +1,40 @@
+<h2>New Book</h2>
+
+<form method="POST" action="/book/submitted_book">
+  <div class="form-wrapper">
+
+    <div class="form-el">
+      <label for="title">Book Title:</label>
+      <input type="text" name="title" id="title"/>
+    </div>
+
+    <div class="form-el">
+      <label for="author-join">Select Author:</label>
+      <select name="author_join" id="author-join">
+        <% @authors.each do |author| %>
+            <option value=<%= author.id %>><%= author.full_name %></option>
+        <% end %>
+      </select>
+    </div>
+
+    <div class="form-el">
+      <label for="publisher">Publisher:</label>
+      <input type="text" name="publisher" id="publisher"/>
+    </div>
+
+    <div class="form-el">
+      <label for="genre">Genre:</label>
+      <input type="text" name="genre" id="genre"/>
+    </div>
+
+    <div class="form-el">
+      <label for="genre">Description:</label>
+      <input type="description" name="description" id="description"/>
+    </div>
+
+    <div class="form-el">
+      <input type="submit" value="Submit Book"/>
+    </div>
+
+  </div>
+</form>

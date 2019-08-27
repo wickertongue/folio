@@ -3,7 +3,6 @@ require('sinatra')
 require('sinatra/contrib/all')
 also_reload('../models/*')
 
-require_relative('../main.rb')
 require_relative('../models/book.rb')
 require_relative('../models/author.rb')
 require_relative('../models/inventory.rb')
@@ -17,26 +16,12 @@ get '/inventory/?' do
   erb(:index)
 end
 
-get '/inventory/new' do
-  erb(:new)
-end
-
 get '/inventory/:id' do
   @inventory = Inventory.find(params['id'].to_i)
   @book = Book.find(@inventory.book_id)
   erb(:show)
 end
 
-post '/new_author' do
-  Author.new(params).save
-  BookAuthorJunction.update
-  submitted_author = Author.all.pop
-
-
-  redirect to '/inventory'
-end
-
-post '/new_book' do
-  Book.new(params).save
-  redirect to '/inventory'
+get '/inventory/new_author' do
+  erb(:"author/new")
 end
