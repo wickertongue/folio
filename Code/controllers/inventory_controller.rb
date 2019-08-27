@@ -23,5 +23,5 @@ end
 
 get '/inventory/more_info/:id' do
   @inventory = Inventory.find(params['id'].to_i)
-  erb(:"inventory/show")
+  erb(:show)
 end

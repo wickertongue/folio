@@ -53,6 +53,13 @@ class Inventory
     return authors.map { |author| Author.new(author) }
   end
 
+  def self.find(id)
+    sql = "SELECT * FROM inventory
+    WHERE id = $1"
+    values = [id]
+    inventory_data = SqlRunner.run(sql, values)
+    return Inventory.new(inventory_data.first)
+  end
 
 # Update
 
