@@ -4,8 +4,8 @@ require_relative("../db/sqlrunner")
 
 class Inventory
 
-  attr_reader :book_id, :id
-  attr_accessor :quantity, :cost_to_sell, :cost_to_purchase
+  attr_reader :id
+  attr_accessor :quantity, :cost_to_sell, :cost_to_purchase, :book_id
 
   def initialize(options)
     @id = options['id'].to_i if options['id']
