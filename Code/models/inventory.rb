@@ -89,8 +89,13 @@ class Inventory
 ## Not working
 
   def present_author_or_authors
-    author_or_authors.each { |author| return author.full_name }
+    author_or_authors.each { |author|
+    return author.full_name }
   end
+
+  # def present_author_or_authors_string
+  #   present_author_or_authors.to_s
+  # end
 
   def reduce_current_quantity_by_one()
     unless @quantity < 1
