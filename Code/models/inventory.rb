@@ -78,13 +78,10 @@ class Inventory
 
 # Other
 
-  def merge_authors_if_necessary
-    if (author_or_authors.count) > 1
-      all_authors = author_or_authors.map { |author| author.full_name }
-      return all_authors
-    else
-      return author_or_authors
-    end
+## Not working
+
+  def present_author_or_authors
+    author_or_authors.each { |author| return author.full_name }
   end
 
   def reduce_current_quantity_by_one()
@@ -93,33 +90,5 @@ class Inventory
       update()
     end
   end
-
-  # def more_than_one_author_for_a_single_book?()
-  #   if author_or_authors.count > 1
-  #     true
-  #   else
-  #     false
-  #   end
-  # end
-  #
-  # def merge_authors_if_necessary()
-  #   author_or_authors
-  #   if more_than_one_author_for_a_single_book? == true
-  #     authors = author_or_authors.map { |author| author.full_name }
-  #     return authors
-  #   else
-  #     return_author_or_authors
-  #   end
-  # end
-
-  # def author_or_authors()
-  #   sql = "SELECT * FROM inventory
-  #   INNER JOIN authors
-  #   ON authors.id = inventory.author_id
-  #   WHERE book_id = $1"
-  #   values = [@book_id]
-  #   authors_data = SqlRunner.run(sql, values)
-  #   return authors_data.map { |author| Author.new(author) }
-  # end
 
 end
