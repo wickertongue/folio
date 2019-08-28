@@ -3,15 +3,39 @@
 
 <h4>Details Page</h4>
 
-<ul>
-  <li>Inventory ID: <%= @inventory.id %></li>
-  <li>Book ID: <%= @inventory.book_id %></li>
-  <li>Book Title: <%= @book.title %></li>
-  <li>Authors: <%= @inventory.present_author_or_authors %></li>
-  <li>Quantity: <%= @inventory.quantity %></li>
-  <li>Cost to Sell: <%= @inventory.cost_to_sell %></li>
-  <li>Cost to Purchase: <%= @inventory.cost_to_purchase %></li>
-</ul>
-<ul>
-  <li class="btn-wrapper"><a href="/inventory/<%= @inventory.id %>/edit">Edit this Entry</li>
-</ul>
+<table style="width 100%">
+    <tr>
+      <th>Inventory ID:</th>
+      <td><%= @inventory.id %></td>
+      <td class="btn-wrapper"><a href="/inventory/<%= @inventory.id %>/edit">Edit this Entry</th></td>
+    </tr>
+
+    <tr>
+      <th>Book ID:</th>
+      <td><%= @inventory.book_id %></td>
+    </tr>
+
+    <tr>
+      <th>Book Title:</th>
+      <td><%= @book.title %></td>
+    </tr>
+
+    <tr>
+      <th>Authors:</th>
+      <td><%= @inventory.present_author_or_authors %></td>
+    </tr>
+
+    <tr>
+      <th>Number in Stock:</th>
+      <td><%= @inventory.quantity %></td>
+    </tr>
+
+    <tr>
+      <th>Purchase Cost:</th>
+      <td><%= @inventory.cost_to_purchase %></td>
+    </tr>
+
+    <tr>
+      <th>Selling Value:</th>
+      <td><%= @inventory.cost_to_sell %></td>
+    </tr>
