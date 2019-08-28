@@ -6,7 +6,7 @@
   <tr>
     <th>Author</th>
     <th>Book Title</th>
-    <th>Number in Stock</th>
+    <th id="stock-column-header">Number in Stock</th>
     <th></th>
   </tr>
     <% for each_item in @inventory %>
@@ -29,7 +29,11 @@
         </td>
         <% end %>
 
-      <td class="btn-wrapper"><a href="/inventory/<%= each_item.id.to_i %>">More Info</a></td>
+        <td>
+            <a href="/inventory/<%= each_item.id %>">
+              <input class="btn btn-more_info" type="submit" value="More Info" />
+            </a>
+        </td>
     </tr>
     <% end %>
 </table>

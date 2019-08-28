@@ -9,8 +9,6 @@
       <input type="hidden" name="id" id="id" value="<%= @inventory.id%>"/>
     </div>
 
-    <!-- input type called hidden -->
-
     <div class="form-el">
       <label for="edit-select-book">Select Book:</label>
       <select name="book_id" id="edit-select-book">
@@ -18,6 +16,7 @@
             <option value=<%= book.id %>><%= book.title %></option>
         <% end %>
       </select>
+
     </div>
 
     <div class="form-el">
