@@ -20,3 +20,8 @@ get '/book/new_book' do
   @authors = Author.all()
   erb(:"book/new")
 end
+
+get '/book/view_books' do
+  @books = Book.all()
+  erb(:"book/show")  
+end

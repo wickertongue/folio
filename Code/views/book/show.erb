@@ -1,0 +1,22 @@
+<h1>List of All Books</h1>
+
+<p>Below is a list of all Books in the system. Please note that some Books will not have been pinned with an Author, and thus will not appear in the Inventory view.</p>
+
+<table style="width 100%">
+  <tr>
+    <th>ID:</th>
+    <th>Book Title:</th>
+    <th>Publisher:</th>
+    <th>Genre:</th>
+    <th>Description:</th>
+  </tr>
+    <% for each_item in @books %>
+    <tr>
+      <td><%= each_item.id %></td>
+      <td><%= each_item.title %></td>
+      <td><%= each_item.publisher %></td>
+      <td><%= each_item.genre %></td>
+      <td><%= each_item.description %></td>
+    </tr>
+    <% end %>
+</table>
