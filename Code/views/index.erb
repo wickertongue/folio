@@ -13,7 +13,22 @@
     <tr>
       <td><%= each_item.present_author_or_authors %></td>
       <td><%= each_item.book.title %></td>
-      <td><%= each_item.quantity %></td>
+
+        <% case
+        when each_item.quantity < 3 %>
+        <td id="low-stock">
+        <%= each_item.quantity %>
+        </td>
+        <% when each_item.quantity < 10 %>
+        <td id="average-stock">
+        <%= each_item.quantity %>
+        </td>
+        <% else %>
+        <td id="good-stock">
+        <%= each_item.quantity %>
+        </td>
+        <% end %>
+
       <td class="btn-wrapper"><a href="/inventory/<%= each_item.id.to_i %>">More Info</a></td>
     </tr>
     <% end %>

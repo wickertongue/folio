@@ -52,3 +52,15 @@ nav li a:hover {
 #content {
   margin-left: 120px;
 }
+
+#low-stock {
+  background-color: red;
+}
+
+#average-stock {
+  background-color: yellow;
+}
+
+#good-stock {
+  background-color: green;
+}
