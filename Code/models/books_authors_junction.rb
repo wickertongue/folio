@@ -4,7 +4,8 @@ require_relative("../db/sqlrunner")
 
 class BookAuthorJunction
 
-  attr_reader :author_id, :book_id, :id
+  attr_reader :id
+  attr_accessor :author_id, :book_id
 
   def initialize(options)
     @id = options['id'].to_i if options['id']

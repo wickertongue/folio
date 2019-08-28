@@ -19,7 +19,7 @@ CREATE TABLE books (
 
 CREATE TABLE inventory (
   id SERIAL8 primary key,
-  book_id INT8 references books(id),
+  book_id INT8 references books(id) ON DELETE CASCADE,
   quantity INT8 NOT NULL,
   cost_to_sell NUMERIC NOT NULL,
   cost_to_purchase NUMERIC NOT NULL
@@ -27,6 +27,6 @@ CREATE TABLE inventory (
 
 CREATE TABLE books_authors_junction (
   id SERIAL8 primary key,
-  author_id INT8 references authors(id),
-  book_id INT8 references books(id)
+  author_id INT8 references authors(id) ON DELETE CASCADE,
+  book_id INT8 references books(id) ON DELETE CASCADE
 );

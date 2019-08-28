@@ -76,16 +76,12 @@ class Book
     SqlRunner.run(sql, values)
   end
 
-  # Other
+  def self.destroy(id)
+    sql = "DELETE FROM books WHERE id = $1"
+    values = [id]
+    SqlRunner.run(sql, values)
+  end
 
-  # def author_or_authors()
-  #   sql = "SELECT * FROM inventory
-  #   INNER JOIN authors
-  #   ON authors.id = inventory.author_id
-  #   WHERE book_id = $1"
-  #   values = [@book_id]
-  #   authors_data = SqlRunner.run(sql, values)
-  #   return authors_data.map { |author| Author.new(author) }
-  # end
+  # Other
 
 end

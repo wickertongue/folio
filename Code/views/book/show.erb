@@ -9,6 +9,7 @@
     <th>Publisher:</th>
     <th>Genre:</th>
     <th>Description:</th>
+    <th></th>
   </tr>
     <% for each_item in @books %>
     <tr>
@@ -17,6 +18,11 @@
       <td><%= each_item.publisher %></td>
       <td><%= each_item.genre %></td>
       <td><%= each_item.description %></td>
+      <td>
+        <form action="/book/<%= each_item.id %>/delete" method="POST">
+            <input class="btn btn-delete" type="submit" value="Delete" />
+        </form>
+      </td>
     </tr>
     <% end %>
 </table>

@@ -16,6 +16,11 @@ post '/book/submitted_book' do
   redirect to '/inventory'
 end
 
+post '/book/:id/delete' do
+  Book.destroy(params[:id])
+  redirect to ("/book/view_books")
+end
+
 get '/book/new_book' do
   @authors = Author.all()
   erb(:"book/new")
@@ -23,5 +28,5 @@ end
 
 get '/book/view_books' do
   @books = Book.all()
-  erb(:"book/show")  
+  erb(:"book/show")
 end
