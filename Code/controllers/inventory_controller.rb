@@ -49,8 +49,6 @@ get '/inventory/:id/edit' do
 end
 
 post '/inventory/:id/delete' do
-  binding.pry
-  nil
   Inventory.destroy(params[:id])
   redirect to ("/inventory")
 end

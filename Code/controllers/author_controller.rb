@@ -21,3 +21,8 @@ get '/author/view_authors' do
   @authors = Author.all()
   erb(:"author/show")
 end
+
+post '/author/:id/delete' do
+  Author.destroy(params[:id])
+  redirect to ("/author/view_authors")
+end

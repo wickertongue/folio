@@ -66,6 +66,12 @@ class Author
     SqlRunner.run(sql, values)
   end
 
+  def self.destroy(id)
+    sql = "DELETE FROM authors WHERE id = $1"
+    values = [id]
+    SqlRunner.run(sql, values)
+  end
+
 # Other
 
   def full_name

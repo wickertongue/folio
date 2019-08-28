@@ -7,12 +7,18 @@
     <th>ID:</th>
     <th>Forename:</th>
     <th>Surname:</th>
+    <th></th>
   </tr>
     <% for each_item in @authors %>
     <tr>
       <td><%= each_item.id %></td>
       <td><%= each_item.forename %></td>
       <td><%= each_item.surname %></td>
+      <td>
+        <form action="/author/<%= each_item.id %>/delete" method="POST">
+            <input class="btn btn-delete" type="submit" value="Delete" />
+        </form>
+      </td>
     </tr>
     <% end %>
 </table>
