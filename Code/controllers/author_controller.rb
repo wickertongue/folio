@@ -16,3 +16,8 @@ post '/author/submitted_author' do
   Author.new(params).save
   redirect to '/inventory'
 end
+
+get '/author/view_authors' do
+  @authors = Author.all()
+  erb(:"author/show")
+end

@@ -84,6 +84,12 @@ class Inventory
     SqlRunner.run(sql, values)
   end
 
+  def self.destroy(id)
+    sql = "DELETE FROM inventory WHERE id = $1"
+    values = [id]
+    SqlRunner.run(sql, values)
+  end
+
 # Other
 
 ## Not working

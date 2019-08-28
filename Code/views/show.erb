@@ -7,7 +7,6 @@
     <tr>
       <th>Inventory ID:</th>
       <td><%= @inventory.id %></td>
-      <td class="btn-wrapper"><a href="/inventory/<%= @inventory.id %>/edit">Edit this Entry</th></td>
     </tr>
 
     <tr>
@@ -39,3 +38,32 @@
       <th>Selling Value:</th>
       <td><%= @inventory.cost_to_sell %></td>
     </tr>
+</table>
+
+<p></p>
+
+<table>
+  <tr>
+
+    <td class="btn-wrapper">
+      <a href="/inventory/<%= @inventory.id %>/edit">
+        <input class="btn btn-edit" type="submit" value="Edit this Entry" />
+      </a>
+    </td>
+
+  </tr>
+</table>
+
+<p></p>
+
+<table>
+  <tr>
+
+  <td class="btn-wrapper">
+    <form action="/inventory/<%= @inventory.id %>/delete" method="POST">
+      <input class="btn btn-delete" type="submit" value="Delete this Entry" />
+    </form>
+  </td>
+
+</tr>
+</table>
