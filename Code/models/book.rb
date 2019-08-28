@@ -35,16 +35,6 @@ class Book
     return book_data.map { |book| Book.new(book) }
   end
 
-  def authors()
-    sql = "SELECT authors.* FROM authors
-    INNER JOIN inventory
-    ON inventory.author_id = authors.id
-    WHERE inventory.book_id = $1"
-    values = [@id]
-    author_data = SqlRunner.run(sql, values)
-    return author_data.map { |author| Author.new(author) }
-  end
-
   def self.find(id)
     sql = "SELECT * FROM books
     WHERE id = $1"

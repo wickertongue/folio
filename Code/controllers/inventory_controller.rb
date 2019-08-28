@@ -40,13 +40,16 @@ get '/inventory/:id' do
   erb(:show)
 end
 
+
 get '/inventory/:id/edit' do
   @inventory = Inventory.find(params['id'].to_i)
   @book = Book.find(@inventory.book_id)
+  @author = Author.find_author_by_book_id(@inventory.book_id)
   @books = Book.all()
   @authors = Author.all()
   erb(:"inventory/edit")
 end
+
 
 post '/inventory/:id/delete' do
   Inventory.destroy(params[:id])

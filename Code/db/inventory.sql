@@ -21,8 +21,8 @@ CREATE TABLE inventory (
   id SERIAL8 primary key,
   book_id INT8 references books(id) ON DELETE CASCADE,
   quantity INT8 NOT NULL,
-  cost_to_sell NUMERIC NOT NULL,
-  cost_to_purchase NUMERIC NOT NULL
+  cost_to_sell NUMERIC(9,2) NOT NULL,
+  cost_to_purchase NUMERIC(9,2) NOT NULL
 );
 
 CREATE TABLE books_authors_junction (

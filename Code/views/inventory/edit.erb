@@ -11,19 +11,26 @@
 
     <div class="form-el">
       <label for="edit-select-book">Select Book:</label>
-      <select name="book_id" id="edit-select-book">
+      <select name="book_id" id="edit-select-book" selected="<%= @book.id  %>">>
         <% @books.each do |book| %>
+          <% if book.id == @book.id %>
+            <option value=<%= book.id %> selected><%= book.title %></option>
+          <% else %>
             <option value=<%= book.id %>><%= book.title %></option>
+          <% end %>
         <% end %>
       </select>
-
     </div>
 
     <div class="form-el">
       <label for="edit-select-author">Select Author:</label>
-      <select name="author_id" id="edit-select-author">
+      <select name="author_id" id="edit-select-author" selected="<%= @author.id  %>">
         <% @authors.each do |author| %>
+          <% if author.id == @author.id %>
+            <option value=<%= author.id %> selected><%= author.full_name %></option>
+          <% else %>
             <option value=<%= author.id %>><%= author.full_name %></option>
+          <% end %>
         <% end %>
       </select>
     </div>
