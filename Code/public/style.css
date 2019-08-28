@@ -1,7 +1,8 @@
 body {
   padding: 30px;
   font-family: 'Verdana', cursive;
-  color: black
+  color: black;
+  background-color: ivory;
 }
 
 table, th, td {
@@ -18,14 +19,36 @@ tr:nth-child(even) {
   background-color: #f2f2f2;
 }
 
+tr:nth-child(odd) {
+  background-color: white;
+}
+
 tr:hover {
   background-color: #f5ebbc;
 }
 
-nav, ul {
+nav ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
+  width: 100px;
+  background-color: #f2f2f2;
+  position: fixed;
+  overflow: auto;
 }
 
-li
+nav li a {
+  border-bottom: 1px solid grey;
+  display: block;
+  padding: 8px 8px;
+  text-decoration: none;
+  color: black;
+}
+
+nav li a:hover {
+  background-color: #f5ebbc;
+}
+
+#content {
+  margin-left: 120px;
+}
