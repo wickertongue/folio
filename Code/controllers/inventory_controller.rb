@@ -28,10 +28,11 @@ post '/inventory/submitted_item' do
   redirect to '/inventory'
 end
 
-
 post '/inventory/submitted_edits' do
   edited_data = Inventory.new(params)
   edited_data.update
+  binding.pry
+  nil
   redirect to "/inventory/#{params['book_id']}"
 end
 

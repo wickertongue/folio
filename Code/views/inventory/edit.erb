@@ -5,6 +5,13 @@
   <div class="form-wrapper">
 
     <div class="form-el">
+      <label for="id"></label>
+      <input type="hidden" name="id" id="id" value="<%= @inventory.id%>"/>
+    </div>
+
+    <!-- input type called hidden -->
+
+    <div class="form-el">
       <label for="edit-select-book">Select Book:</label>
       <select name="book_id" id="edit-select-book">
         <% @books.each do |book| %>
