@@ -97,7 +97,10 @@ class Inventory
 
 # for each author as a product of author_or_authors take each author and return each authors full name
 
-
+  def markup
+    markup = @cost_to_sell - @cost_to_purchase
+    sprintf('%.2f', markup)
+  end
 
   def present_author_or_authors
     author_or_authors.each { |author|

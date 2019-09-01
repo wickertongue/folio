@@ -8,6 +8,7 @@
     <th>Book Title</th>
     <th id="stock-column-header">Number in Stock</th>
     <th>Price</th>
+    <th>Markup</th>
     <th></th>
   </tr>
     <% for each_item in @inventory %>
@@ -30,6 +31,7 @@
         </td>
         <% end %>
         <td>£<%= each_item.present_cost_to_sell %></td>
+        <td>£<%= each_item.markup %></td>
 
         <td>
             <a href="/inventory/<%= each_item.id %>">
