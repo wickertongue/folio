@@ -42,12 +42,12 @@
 
     <div class="form-el">
       <label for="cost-to-sell">Selling Value:</label>
-      <input type="number" name="cost_to_sell" id="cost-to-sell" value="<%= @inventory.cost_to_sell%>"/>
+      <input type="number" step=".01" name="cost_to_sell" id="cost-to-sell" value="<%= @inventory.cost_to_sell%>"/>
     </div>
 
     <div class="form-el">
       <label for="cost-to-purchase">Purchase Cost:</label>
-      <input type="number" name="cost_to_purchase" id="cost-to-purchase" value="<%= @inventory.cost_to_purchase%>"/>
+      <input type="number" step=".01" name="cost_to_purchase" id="cost-to-purchase" value="<%= @inventory.cost_to_purchase%>"/>
     </div>
 
     <div class="form-el">
