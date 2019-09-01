@@ -11,8 +11,8 @@ class Inventory
     @id = options['id'].to_i if options['id']
     @book_id = options['book_id'].to_i
     @quantity = options['quantity'].to_i
-    @cost_to_sell = options['cost_to_sell'].to_i
-    @cost_to_purchase = options['cost_to_purchase'].to_i
+    @cost_to_sell = options['cost_to_sell'].to_f
+    @cost_to_purchase = options['cost_to_purchase'].to_f
   end
 
 # Create
@@ -94,10 +94,19 @@ class Inventory
 
 ## Not working
 
+# for each author as a product of author_or_authors take each author and return each authors full name
+
+
+
   def present_author_or_authors
     author_or_authors.each { |author|
     return author.full_name }
   end
+
+
+
+
+
 
   def reduce_current_quantity_by_one()
     unless @quantity < 1
