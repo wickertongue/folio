@@ -1,4 +1,5 @@
 require('pry')
+require('bigdecimal')
 
 require_relative("../db/sqlrunner")
 
@@ -103,10 +104,13 @@ class Inventory
     return author.full_name }
   end
 
+  def present_cost_to_sell
+    sprintf('%.2f', @cost_to_sell)
+  end
 
-
-
-
+  def present_cost_to_purchase
+    sprintf('%.2f', @cost_to_purchase)
+  end
 
   def reduce_current_quantity_by_one()
     unless @quantity < 1
