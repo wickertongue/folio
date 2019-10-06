@@ -1,6 +1,8 @@
-require('pry')
 require('sinatra')
 require('sinatra/contrib/all')
+require('rubygems')
+require('bundler/setup')
+
 also_reload('../models/*')
 
 require_relative('../models/book.rb')

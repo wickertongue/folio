@@ -1,4 +1,7 @@
-require( 'pg' )
+require('pg')
+require('rubygems')
+require('bundler/setup')
+
 
 class SqlRunner
 
