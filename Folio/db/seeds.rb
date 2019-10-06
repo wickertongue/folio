@@ -1,5 +1,3 @@
-require('pry')
-
 require_relative("../models/book")
 require_relative("../models/author")
 require_relative("../models/inventory")
@@ -176,7 +174,3 @@ book_author_junction6 = BookAuthorJunction.new({
   })
 
 book_author_junction6.save()
-
-
-binding.pry
-nil

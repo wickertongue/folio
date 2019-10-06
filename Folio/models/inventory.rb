@@ -1,4 +1,3 @@
-require('pry')
 require('bigdecimal')
 
 require_relative("../db/sqlrunner")
