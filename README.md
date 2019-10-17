@@ -5,7 +5,7 @@ Folio is an inventory management app created for small bookstores. The applicati
 
 ## Heroku
 
-Folio is now [https://folio-inventory-app.herokuapp.com/inventory](running on Heroku).
+Folio is now [running on Heroku] (https://folio-inventory-app.herokuapp.com/inventory).
 
 ## Getting Started
 ### Installation
