@@ -12,7 +12,19 @@ Folio is now [running on Heroku](https://folio-inventory-app.herokuapp.com/inven
 ## Getting Started
 ### Installation
 
-Download files, and then run ```ruby main.rb``` in the terminal. In your browser, navigate to http://localhost:4567
+Create a database using PostSQL called inventory by running the below in your CLI
+```
+createdb inventory
+```
+Navigate to Folio/db in your CLI, then link the inventory database to inventory.sql by running the below
+```
+psql -d inventory -f inventory.sql
+```
+To launch Sinatra and create the web environment, run the below in your CLI
+```
+ruby main.rb
+```
+Browse to [http://localhost:4567](http://localhost:4567/)
 
 ### Using Folio
 
