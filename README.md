@@ -1,9 +1,9 @@
 # Folio
 ## An Inventory Management App for Bookshops
 
-![Folio Homepage](images/folio_homepage.png "Folio Homepage")
-
 Folio is an inventory management app created for small bookstores. The application allows the user to create, edit, delete and track books stored in their inventory. The app is intended to be used by employees, and not by clients/customers.
+
+![Folio Homepage](images/folio_homepage.png "Folio Homepage")
 
 ## Sample - Heroku
 
